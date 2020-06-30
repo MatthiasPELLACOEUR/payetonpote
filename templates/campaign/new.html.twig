@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Campaign
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="center">Create new Campaign</h1>
+
+        
+        <div class="row">
+            <div class="col s8 offset-s2">
+                {{ include('campaign/_form.html.twig') }}
+            </div>
+        </div>
+        <a href="{{ path('campaign_index') }}">back to list</a>
+	</div>
+{% endblock %}

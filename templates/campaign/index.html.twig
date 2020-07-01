@@ -32,8 +32,8 @@
 							<td>{{ campaign.goal }}</td>
 							<td>{{ campaign.name }}</td>
 							<td>
-								<a href="{{ path('campaign_show', {'id': campaign.id}) }}">show</a>
-								<a href="{{ path('campaign_edit', {'id': campaign.id}) }}">edit</a>
+								<a class="btn blue waves-effect waves-light" href="{{ path('campaign_show', {'id': campaign.id}) }}">show</a>
+								<a class="btn green waves-effect waves-light" href="{{ path('campaign_edit', {'id': campaign.id}) }}">edit</a>
 							</td>
 						</tr>
 					{% else %}
@@ -44,6 +44,8 @@
 				</tbody>
 			</table>
 		</div>
-        <a href="{{ path('campaign_new') }}">Create new</a>
+		<div class="row">
+			<a href="{{ path('campaign_new') }}">Create new</a>
+		</div>
 	</div>
 {% endblock %}

@@ -26,21 +26,21 @@ class Payment
      *
      * @ORM\Column(name="amount", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $amount = 'NULL';
+    private $amount;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=true, options={"default"="NULL"})
      */
-    private $createdAt = 'NULL';
+    private $createdAt;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=true, options={"default"="NULL"})
      */
-    private $updatedAt = 'NULL';
+    private $updatedAt;
 
     /**
      * @var \Participant
@@ -105,5 +105,11 @@ class Payment
         return $this;
     }
 
+    public function setId(): self
+    {	
+        $id = md5(random_bytes(50));
+        $this->id = $id;
 
+        return $this;
+    }
 }

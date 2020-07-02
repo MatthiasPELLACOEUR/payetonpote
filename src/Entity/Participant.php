@@ -26,14 +26,14 @@ class Participant
      *
      * @ORM\Column(name="name", type="string", length=200, nullable=true, options={"default"="NULL"})
      */
-    private $name = 'NULL';
+    private $name;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="email", type="string", length=200, nullable=true, options={"default"="NULL"})
      */
-    private $email = 'NULL';
+    private $email;
 
     /**
      * @var \Campaign
@@ -86,5 +86,12 @@ class Participant
         return $this;
     }
 
+    public function setId(): self
+    {	
+        $id = md5(random_bytes(50));
+        $this->id = $id;
+
+        return $this;
+    }
 
 }

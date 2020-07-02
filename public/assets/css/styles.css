@@ -59,7 +59,10 @@ footer.page-footer {
 footer.page-footer .footer-links{
     line-height: 2rem;
 }
-
+.participate {
+    margin-left: 425px;
+    font-weight: bold;
+}
 
 
 

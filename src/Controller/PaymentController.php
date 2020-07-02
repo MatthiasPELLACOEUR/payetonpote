@@ -17,9 +17,9 @@ class PaymentController extends AbstractController
 {
 
        /**
-     * @Route("/new", name="payment_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="payment_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Campaign $campaign): Response
     {
         $payment = new Payment();
         $form = $this->createForm(PaymentType::class, $payment);
@@ -27,13 +27,15 @@ class PaymentController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $payment->setId();
+            // $payment->setId();
+            $participant = $payment->getParticipant();
+            $participant->setCampaign($campaign);
             $payment->getParticipant()->setId();
+            $entityManager->persist($participant);
             $entityManager->persist($payment);
-            dd($payment, $request);
             $entityManager->flush();
 
-            return $this->redirectToRoute('payment_show', ['id' => $payment->getId()]);
+            return $this->redirectToRoute('campaign_show', ['id' => $campaign->getId()]);
         }
 
         return $this->render('payment/new.html.twig', [

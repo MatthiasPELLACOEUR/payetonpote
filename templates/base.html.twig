@@ -61,9 +61,9 @@
         {% endblock %}
 
         <!--JavaScript at end of body for optimized loading-->
-        <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+        <script type="text/javascript" src="{{asset('assets/js/materialize.min.js')}}"></script>
         <!--Init & custom scripts-->
-        <script type="text/javascript" src="assets/js/scripts.js"></script>
+        <script type="text/javascript" src="{{asset('assets/js/scripts.js')}}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

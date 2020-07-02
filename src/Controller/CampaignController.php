@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Campaign;
+use App\Entity\Participant;
+use App\Entity\Payment;
 use App\Form\CampaignType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -57,8 +59,37 @@ class CampaignController extends AbstractController
      */
     public function show(Campaign $campaign): Response
     {
+        $participants = $this->getDoctrine()
+        ->getRepository(Participant::class)
+        ->findAll();
+        $participants_array = [];
+        $payments_array = [];
+        $totalParticipants = 0;
+        $totalPayment = 0;
+        $pourcentage = 0;
+
+        foreach($participants as $participant){
+            $payments = $this->getDoctrine()
+            ->getRepository(Payment::class)
+            ->findAll();
+            $totalParticipants += 1;
+        }
+
+        foreach($payments as $payment){
+            $totalPayment += $payment->getAmount();
+            array_push($participants_array, $participant);
+            array_push($payments_array, $payment);
+        }
+
+        $pourcentage = round(($totalPayment/$campaign->getGoal())*100);
+
         return $this->render('campaign/show.html.twig', [
             'campaign' => $campaign,
+            'participant' => $participants_array,
+            'payments' => $payments_array,
+            'totalParticipants' => $totalParticipants,
+            'totalPayment' => $totalPayment,
+            'pourcentage' => $pourcentage,
         ]);
     }
 

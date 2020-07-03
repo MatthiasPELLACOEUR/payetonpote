@@ -31,7 +31,7 @@ class CampaignController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="campaign_new", methods={"GET","POST"})
+     * @Route("/new/", name="campaign_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -61,35 +61,28 @@ class CampaignController extends AbstractController
     {
         $participants = $this->getDoctrine()
         ->getRepository(Participant::class)
-        ->findAll();
-        $participants_array = [];
-        $payments_array = [];
-        $totalParticipants = 0;
+        ->findBy(array('campaign' => $campaign));
+
+        $countParticipant= count($participants);
+        $payments = $this->getDoctrine()
+        ->getRepository(Payment::class)
+        ->findBy(array('participant' => $participants));
         $totalPayment = 0;
         $pourcentage = 0;
 
-        foreach($participants as $participant){
-            $payments = $this->getDoctrine()
-            ->getRepository(Payment::class)
-            ->findAll();
-            $totalParticipants += 1;
-        }
-
         foreach($payments as $payment){
             $totalPayment += $payment->getAmount();
-            array_push($participants_array, $participant);
-            array_push($payments_array, $payment);
+            
         }
 
         $pourcentage = round(($totalPayment/$campaign->getGoal())*100);
 
         return $this->render('campaign/show.html.twig', [
             'campaign' => $campaign,
-            'participant' => $participants_array,
-            'payments' => $payments_array,
-            'totalParticipants' => $totalParticipants,
             'totalPayment' => $totalPayment,
             'pourcentage' => $pourcentage,
+            'countParticipant' => $countParticipant,
+            'payments' => $payments,
         ]);
     }
 

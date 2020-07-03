@@ -65,6 +65,19 @@ footer.page-footer .footer-links{
 }
 
 
+.blue{
+    background-color: #009688!important;
+}
+.blue-text{
+    color: #009688!important;
+}
+.red{
+   background-color: #e91e63!important;
+}
+.red-text{
+    color: #e91e63!important;
+ }
+
 
 
 /**/

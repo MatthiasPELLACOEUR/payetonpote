@@ -27,7 +27,6 @@ class PaymentController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            // $payment->setId();
             $participant = $payment->getParticipant();
             $participant->setCampaign($campaign);
             $payment->getParticipant()->setId();
@@ -41,6 +40,7 @@ class PaymentController extends AbstractController
         return $this->render('payment/new.html.twig', [
             'payment' => $payment,
             'form' => $form->createView(),
+            'campaign' => $campaign,
         ]);
     }
 

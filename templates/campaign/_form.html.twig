@@ -1,4 +1,31 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn blue right waves-effect waves-light">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="card">
+    <div class="card-content">
+        <div class="row">
+            {{ form_start(form) }}
+                <div class="input-field col s12 l7">
+                    {{ form_label(form.title, 'Nom de la Campagne') }}
+                    {{ form_widget(form.title, {'attr' : {'class': 'validate'}} )  }}
+                </div>
+                <div class="input-field col s12 l10">
+                    {{ form_label(form.content) }}
+                    {{ form_widget(form.content, {'attr' : {'class': 'validate, materialize-textarea'}}) }}
+                </div>
+                <div class="input-field col s12 l12">
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name, {'attr' : {'class': 'validate'}} )  }}
+                </div>
+                <div class="input-field col s12 l10">
+                    {{ form_label(form.goal) }}
+                    {{ form_widget(form.goal, {'attr' : {'class': 'validate'}} )  }}
+                </div>
+                <div class="col s12 l12">
+                    {# <button class="btn red btn-large right waves-effect waves-light">{{ button_label|default('Save') }}</button> #}
+                    <button class="btn btn-large waves-effect waves-light red col s12" style="margin-top: 20px;" type="submit" name="action">
+                        {{ button_label|default('Valider la campagne') }}
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

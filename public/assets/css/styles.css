@@ -107,10 +107,10 @@ footer.page-footer .footer-links{
     height: 10px;
 }
 .carousel .indicators .indicator-item{
-    background-color: rgba(33, 149, 243, 0.50)!important;
+    background-color: rgba(0, 150, 135, 0.5)!important;
 }
 .carousel .indicators .indicator-item.active{
-    background-color: rgb(33, 149, 243)!important;
+    background-color: rgba(0, 150, 135)!important;
 }
 .progress-section .progress{
     height: 30px;

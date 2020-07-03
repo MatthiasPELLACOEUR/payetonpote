@@ -63,10 +63,13 @@ class CampaignController extends AbstractController
         ->getRepository(Participant::class)
         ->findBy(array('campaign' => $campaign));
 
+
         $countParticipant= count($participants);
+        
         $payments = $this->getDoctrine()
         ->getRepository(Payment::class)
         ->findBy(array('participant' => $participants));
+
         $totalPayment = 0;
         $pourcentage = 0;
 

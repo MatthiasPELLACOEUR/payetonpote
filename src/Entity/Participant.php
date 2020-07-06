@@ -24,14 +24,14 @@ class Participant
     /**
      * @var string|null
      *
-     * @ORM\Column(name="name", type="string", length=200, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="name", type="string", length=200, nullable=false, options={"default"="NULL"})
      */
     private $name;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="email", type="string", length=200, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="email", type="string", length=200, nullable=false, options={"default"="NULL"})
      */
     private $email;
 

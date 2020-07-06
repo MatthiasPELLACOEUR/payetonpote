@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,7 +25,10 @@ class Payment
     /**
      * @var int|null
      *
-     * @ORM\Column(name="amount", type="integer", nullable=true, options={"default"="NULL"})
+     * @Assert\Range(
+     * min=0,
+     * minMessage = "Le montant doit être supérieur à 0 €")
+     * @ORM\Column(name="amount", type="integer", nullable=false, options={"default"="NULL"})
      */
     private $amount;
 
@@ -50,7 +54,14 @@ class Payment
      *   @ORM\JoinColumn(name="participant_id", referencedColumnName="id")
      * })
      */
+    
     private $participant;
+
+     
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $is_anonymous;
 
     public function getId(): ?int
     {
@@ -104,4 +115,16 @@ class Payment
 
         return $this;
     }
+    public function getIsAnonymous(): ?int
+    {
+        return $this->is_anonymous;
+    }
+
+    public function setIsAnonymous(int $is_anonymous): self
+    {
+        $this->is_anonymous = $is_anonymous;
+
+        return $this;
+    }
+
 }

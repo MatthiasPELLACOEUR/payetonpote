@@ -100,7 +100,7 @@ class CampaignController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('campaign_index');
+            return $this->redirectToRoute('campaign_show', ['id' => $campaign->getId()]);
         }
 
         return $this->render('campaign/edit.html.twig', [

@@ -24,24 +24,31 @@ class PaymentController extends AbstractController
         $payment = new Payment();
         $form = $this->createForm(PaymentType::class, $payment);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        $participant = $payment->getParticipant();
+        
+        
+        if ($form->isSubmitted() && $form->isValid() && $payment->getAmount() > 0) {
             $entityManager = $this->getDoctrine()->getManager();
-            $participant = $payment->getParticipant();
             $participant->setCampaign($campaign);
+            $participant->getName();
+            $participant->getEmail();
+            // dd($request);
+            
             $payment->getParticipant()->setId();
+
             $entityManager->persist($participant);
             $entityManager->persist($payment);
             $entityManager->flush();
-
             return $this->redirectToRoute('campaign_show', ['id' => $campaign->getId()]);
         }
 
+    
         return $this->render('payment/new.html.twig', [
             'payment' => $payment,
             'form' => $form->createView(),
             'campaign' => $campaign,
         ]);
+        
     }
 
 }

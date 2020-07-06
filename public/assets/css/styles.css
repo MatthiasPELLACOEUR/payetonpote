@@ -77,8 +77,15 @@ footer.page-footer .footer-links{
 .red-text{
     color: #e91e63!important;
  }
+.checkboxOpac {
+    opacity: 100%!important;
+    display: flex!important;
+    float: right!important;
+}
 
-
+.tgf {
+    padding-bottom: 300px;
+}
 
 /**/
 .parallax-container.hero-banner {

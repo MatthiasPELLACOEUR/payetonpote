@@ -6,6 +6,7 @@ namespace App\Form;
 use App\Form\ParticipantType;
 use App\Entity\Payment;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,6 +16,10 @@ class PaymentType extends AbstractType
     {
         $builder
         ->add('participant', ParticipantType::class)
+        ->add('is_anonymous', CheckboxType::class, [
+            'label'     => 'Être Anonyme ?',
+            'required'  => false,
+        ])
         ->add('amount')
         ;
     }

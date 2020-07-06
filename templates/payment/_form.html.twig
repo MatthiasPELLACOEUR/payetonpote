@@ -8,8 +8,24 @@
         {{ form_widget(form.participant.email, {'attr' : {'class': 'validate'}}) }}
     </div>
     <div class="input-field col s12 l6">
-        {{ form_label(form.amount, 'Montant') }}
-        {{ form_widget(form.amount, {'attr' : {'class': 'validate'}}) }}
+        <label>
+            {{ form_widget(form.is_anonymous) }}
+            <span>Être Anonyme ?</span>
+        </label>
     </div>
-    <button class="btn blue right waves-effect waves-light">{{ button_label|default('Save') }}</button>
+    <div class="input-field col s12 l6">
+        <font style="color:red;"> {{form_errors(form.amount)}}</font>
+        {{ form_label(form.amount, 'Montant') }}
+        {{ form_widget(form.amount, {'attr' : {'class': 'validate '}}) }}
+    </div>
+    <div class="input-field col s12 l6">
+        <a href="#!" class="btn btn-large waves-effect waves-light grey col s12">Annuler</a>
+    </div>
+    <div class="input-field col s12 l6">
+        <button class="btn btn-large waves-effect waves-light red col s12" id="participateBtn" type="submit" name="action">
+            Participer
+            <i class="material-icons right">euro_symbol</i>
+        </button>
+    </div>
+    </div>
 {{ form_end(form) }}

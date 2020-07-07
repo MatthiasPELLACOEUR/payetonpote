@@ -28,13 +28,17 @@
             {% if campaign.goal == totalPayment %}
                 <div class="row">
                     <div class="card col s12 m12 l8 offset-l2 grey">
-                        <div class="card-content ">
-                            <h4 class="white-text lighten-1 ">Montant de la cagnote atteinte, Félicitation !</h4>
+                        <div class="card-content card-congratulations">
+                            <h4 class="white-text lighten-1 text-congratulations">Montant de la cagnote atteinte, Félicitation !</h4>
                         </div>
                     </div>
                     </div>
             {% else %}
-                <a href="{{ path('payment_new', {'id' : campaign.id}) }}" class="btn-large waves-effect waves-light red col s12 l6">Participer</a>
+            <div class="row">
+                <div class="col s12 offset-m2 offset-l3">
+                    <a href="{{ path('payment_new', {'id' : campaign.id}) }}" class="btn-large waves-effect waves-light red col s12 m8 l6">Participer</a>
+                </div>
+            </div>
             {% endif %}
         </div>
                     

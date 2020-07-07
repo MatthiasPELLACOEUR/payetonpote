@@ -83,8 +83,14 @@ footer.page-footer .footer-links{
     float: right!important;
 }
 
-.tgf {
-    padding-bottom: 300px;
+.card-congratulations {
+    padding: 0!important;
+}
+
+.text-congratulations {
+    padding-top: 0px;
+    padding: 50px;
+    text-align: center;
 }
 
 /**/
